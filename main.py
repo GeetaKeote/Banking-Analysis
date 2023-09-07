@@ -1,10 +1,11 @@
-import os
-from Banking.config.configuration import Configuration
+import os, sys
+import pandas as pd
+import numpy as np
+from Banking.constant import *
 from Banking.logger import logging
 from Banking.exception import CustomException
-from Banking.pipeline.pipeline import Pipeline
-from Banking.entity.artifact_entity import DataIngestionArtifact
-from Banking.components.data_ingestion import DataIngestion
+from Banking.pipeline.pipeline import Pipeline 
+
 
 def main():
     try:

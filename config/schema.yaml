@@ -1,0 +1,44 @@
+FileName: "Banking_dataset.csv"
+NumberofColumns: 16
+ColumnNames:
+  age: int
+  job: category
+  marital: category
+  education: category
+  default: category
+  housing: category
+  loan: category
+  contact: category
+  month: category
+  day_of_week: category
+  duration: int
+  campaign: int
+  pdays: int
+  previous: int
+  poutcome: category
+  y: category
+
+Numerical_columns:
+  - age
+  - duration
+  - campaign
+  - pdays
+  - previous
+
+Onehot_columns:
+  - job
+  - marital
+  - education
+  - default
+  - housing
+  - loan
+  - contact
+  - month
+  - day_of_week
+  - poutcome
+
+target_column: y
+
+
+
+

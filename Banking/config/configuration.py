@@ -3,7 +3,7 @@ from Banking.constant import *
 from Banking.logger import logging
 from Banking.exception import CustomException
 from Banking.entity.config_entity import *
-from Banking.utils import read_yaml_file
+from Banking.utils.utils import read_yaml_file
 
 class Configuration:
 
@@ -56,6 +56,35 @@ class Configuration:
             return data_ingestion_config
         except Exception as e:
             raise CustomException(e, sys) from e
+
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        try:
+            # where we are goging to store our outpuit
+
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            #We are joining our complete file artifact dir, data_validation, time stamp folder
+            data_validation_artifact_dir=os.path.join(
+                artifact_dir,
+                DATA_VALIDATION_ARTIFACT_DIR,
+                self.time_stamp
+            )
+            # we are going to read our yaml file
+            data_validation_config = self.config_info[DATA_VALIDATION_CONFIG_KEY]
+
+            schema_file_path = os.path.join(ROOT_DIR,
+            data_validation_config[DATA_VALIDATION_SCHEMA_DIR_KEY],
+            data_validation_config[DATA_VALIDATION_SCHEMA_FILE_NAME_KEY]
+            )
+
+            data_validation_config = DataValidationConfig(
+                schema_file_path=schema_file_path
+            )
+            return data_validation_config
+        except Exception as e:
+            raise CustomException(e,sys) from e
+
 
     def get_training_pipeline_config(self) -> TrainingPipelineConfig:
         try:

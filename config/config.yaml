@@ -3,8 +3,13 @@ training_pipeline_config:
   artifact_dir: artifact
 
 data_ingestion_config: 
-  dataset_download_url: https://raw.githubusercontent.com/GeetaKeote/Datasets/main/Banking_term_deposit%20Analysis.csv
-  ingested_dir: ingested_Data
+  dataset_download_url: https://raw.githubusercontent.com/GeetaKeote/Datasets/main/Banking_dataset.csv
   raw_data_dir: raw_data
+  ingested_dir: ingested_data
   ingested_train_dir: train
   ingested_test_dir: test
+
+
+data_validation_config:
+  schema_dir: config
+  schema_file_name: schema.yaml
